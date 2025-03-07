@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện Tài khoản Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>ACCOUNT LIÊN QUÂN</h1>
+        <style>
+           .container h1{
+                color: #0056b3;
+            }
+        </style>
+        <div id="adminKeySection">
+            <label for="adminKey">Admin Key:</label>
+            <input type="text" id="adminKey" placeholder="Nhập chìa khóa admin" required>
+            <button onclick="verifyAdminKey()">Nhập</button>
+        </div>
+
+        <!-- Phần Danh Sách Tài Khoản Game sẽ ẩn cho đến khi nhập đúng chìa khóa -->
+        <div id="accountSection" style="display: none;">
+            <h2>Danh Sách Tài Khoản Game</h2>
+            <table id="accountTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Tài Khoản</th>
+                        <th onclick="sortTable(1)">Mật Khẩu</th>
+                        <th onclick="sortTable(2)">Game</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Các tài khoản sẽ được hiển thị sẵn tại đây -->
+                    <tr>
+                        <td>maylaheo234</td>
+                        <td>Hieu12345678</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>vietanh211210</td>
+                        <td>Vietanh211210</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>Vietanh211210</td>
+                        <td>Vietanh211210</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>Mattaccc</td>
+                        <td>Phamnguyenthu,3
+                        </td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>Solo963dz</td>
+                        <td>Solo963dz</td>
+                    </td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>Conmickket03</td>
+                        <td>
+                            @Tam19102004</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>kenqni76f1</td>
+                        <td>Kenqni6666</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>vu_hao1209</td>
+                        <td>Hieu1993</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>caykeolon</td>
+                        <td>caykeongot12</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>donhattoi2002</td>
+                        <td>nhattoi2005</td>
+                        <td>Liên Quân</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>caykeongot12</td>
+                        <td>tanvinh1409</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>trautre2506</td>
+                        <td>Tu1denchin</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    <tr>
+                        <td>nguyenvanhe987</td>
+                        <td>thinhbui101114</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>doanhoaithuong@gmail.com</td>
+                        <td>17122003thuong</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>quoc01642095068</td>
+                        <td>quoc10042002</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>phongshynn2103@gmail.com</td>
+                        <td>lemanhphong2103</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>namketrum10a</td>
+                        <td>tranvietnam1402</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>vietanh211210</td>
+                        <td>Vietanh211210</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>khangpprroo</td>
+                        <td>khangkoi2049</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>buomdep03062004</td>
+                        <td>123123zxc</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>nguyenvanhe987</td>
+                        <td>thinhbui101114</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>truongkt693</td>
+                        <td>truongdo123ttt</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>minhhiepka90</td>
+                        <td>26062006hiep</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>phatsadboiz15</td>
+                        <td>sadboiz150909</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>rdlq68p1824</td>
+                        <td>Kang23456</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>Drthanh0646</td>
+                        <td>Thanh0646</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ttuongokk</td>
+                        <td>QWeasdzxc123</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>hungcachep1102</td>
+                        <td>khanhhung95</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>nhathuy142</td>
+                        <td>hothikieunhi1911</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>manhhua111</td>
+                        <td>Tai01634517120</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>ok_em_1998</td>
+                        <td>hoi08081998</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>hocsinhbadao01</td>
+                        <td>truong2004</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>manhhua111</td>
+                        <td>Tai01634517120</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>thangvipboy2002</td>
+                        <td>thang184</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>mlskin.h11</td>
+                        <td>Sonoccho123@</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>phatcute1611sus</td>
+                        <td>phatcute1611sus</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>nghiahuu085002</td>
+                        <td>nghia2901</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>saymeomeo671</td>
+                        <td>lalala111</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>khanhthanh_1986</td>
+                        <td>Huy14112003</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>namnhoc2016</td>
+                        <td>Namunin1998@ </td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>phuong1stks</td>
+                        <td>minhmobile2008</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>thaolovenguyen</td>
+                        <td>phamtuanthuan01</td>
+                        <td>Liên Quân</td>
+                    </tr>
+
+                    <tr>
+                        <td>Quan2003asd</td>
+                        <td>0978890979asd</td>
+                        <td>Liên Quân</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+ /* styles.css */
+
+/* Cấu hình chung cho body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container chứa nội dung */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Tiêu đề */
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Phần nhập chìa khóa admin */
+#adminKeySection {
+    text-align: center;
+}
+
+/* Định dạng input và button */
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của form */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của form */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Định dạng bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Media query cho màn hình nhỏ (mobile) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Chiếm 95% chiều rộng màn hình */
+    }
+
+    /* Làm cho các input và button co lại để vừa với màn hình nhỏ */
+    input, button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Giảm kích thước font cho tiêu đề */
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    /* Thay đổi kiểu bảng cho dễ đọc trên màn hình nhỏ */
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+/* Media query cho màn hình lớn (tablet, desktop) */
+@media (min-width: 768px) {
+    .container {
+        width: 80%; /* 80% chiều rộng cho các thiết bị lớn hơn */
+    }
+
+    /* Làm cho bảng hiển thị dễ dàng hơn trên màn hình lớn */
+    table {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+}
+
+</style>
+<script>
+    // script.js
+
+// Chìa khóa Admin để xác thực
+const correctAdminKey = "admin123"; // Thay thế bằng chìa khóa của bạn
+
+// Hàm kiểm tra chìa khóa Admin
+function verifyAdminKey() {
+    const inputKey = document.getElementById('adminKey').value;
+
+    // Kiểm tra chìa khóa nhập vào
+    if (inputKey === correctAdminKey) {
+        // Ẩn phần nhập liệu chìa khóa và hiển thị bảng tài khoản
+        document.getElementById('adminKeySection').style.display = 'none';
+        document.getElementById('accountSection').style.display = 'block';
+    } else {
+        alert("Chìa khóa Admin không đúng. Vui lòng thử lại.");
+    }
+}
+
+// Hàm sắp xếp bảng
+function sortTable(n) {
+    const table = document.getElementById("accountTable");
+    let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    switching = true;
+    dir = "asc"; 
+
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+
+            if (dir === "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+        } else {
+            if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+
+</script>
