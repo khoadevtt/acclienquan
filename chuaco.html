@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ chưa ra mắt</title>
+    <style>
+        /* Thiết lập nền đẹp */
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Màu nền gradient */
+            font-family: 'Arial', sans-serif;
+            height: 100vh; /* Chiều cao đầy đủ */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Tạo hiệu ứng cho thông báo */
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 3em;
+            background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Hiệu ứng chuyển động khi trang tải */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Dịch vụ chưa ra mắt!</h1>
+</body>
+</html>

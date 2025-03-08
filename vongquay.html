@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Random</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Random Acc Liên Quân</h1>
+        
+        <!-- Wallet Section with Key Input -->
+        <div id="wallet">
+            <label for="key">Nhập Key tiền <br> Key free mỗi ngày: khoatv, khoab2, khoabt</label>
+            <input type="text" id="key" placeholder="Nhập key để nạp tiền" />
+            <button id="loadMoney">Nạp tiền</button>
+            <p>Số dư: <span id="balance">0</span> VNĐ</p>
+            <button id="resetBalance">Reset Số Dư</button> <!-- Thêm nút Reset -->
+        </div>
+        
+        <!-- Random Spin Section -->
+        <div id="randomSection">
+            <button id="spinButton">Quay</button>
+            <!-- Loading Animation -->
+            <div id="loading" class="hidden">
+                <div class="loader"></div>
+                <p>Đang quay...</p>
+            </div>
+            <div id="randomResult" class="hidden">
+                <p id="resultText">Xui rồi! Không trúng</p>
+                <button id="closePopup">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #00bcd4, #8e24aa); /* Gradient background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container Styling */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Wallet Section */
+#wallet {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#wallet input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+#wallet input:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+#wallet button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#wallet button:hover {
+    background-color: #45a049;
+}
+
+#wallet p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Reset Button */
+#wallet #resetBalance {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336; /* Red background for reset */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#wallet #resetBalance:hover {
+    background-color: #e53935; /* Darker red when hovered */
+}
+
+/* Random Section Styling */
+#randomSection {
+    margin-top: 20px;
+}
+
+#spinButton {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+}
+
+#spinButton:hover {
+    background-color: #fb8c00;
+}
+
+/* Loading Animation */
+#loading {
+    margin-top: 20px;
+    display: none;
+    text-align: center;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #4caf50; /* Green */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#randomResult {
+    margin-top: 20px;
+    background-color: #ffeb3b;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#resultText {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f44336;
+}
+
+#closePopup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#closePopup:hover {
+    background-color: #45a049;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    #wallet input, #wallet button {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    #spinButton {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    #randomResult {
+        padding: 15px;
+    }
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    #resultText {
+        font-size: 18px;
+    }
+
+    #spinButton {
+        font-size: 16px;
+    }
+
+    #closePopup {
+        font-size: 14px;
+    }
+}
+
+</style>
+<script>
+    // Load initial balance from localStorage
+let balance = localStorage.getItem('balance') || 0;
+let usedKeys = JSON.parse(localStorage.getItem('usedKeys')) || [];
+
+document.getElementById('balance').textContent = balance;
+
+// Function to nạp tiền khi nhập Key
+document.getElementById('loadMoney').addEventListener('click', function () {
+    let key = document.getElementById('key').value.trim();
+    
+    // Kiểm tra key đã được dùng chưa
+    if (usedKeys.includes(key)) {
+        alert('Key đã được sử dụng!');
+        return;
+    }
+
+    // Kiểm tra key hợp lệ (tk10, tk20, tk30)
+    if (key === "khoa1" || key === "khoa12" || key === "khoatv" || key === "khoab2" || key === "khoaffr2" || key === "khoabt") {
+        balance = parseInt(balance) + 20000;
+        usedKeys.push(key);
+        localStorage.setItem('balance', balance);
+        localStorage.setItem('usedKeys', JSON.stringify(usedKeys));
+        document.getElementById('balance').textContent = balance;
+        alert('Nạp tiền thành công!');
+    } else {
+        alert('Key không hợp lệ!');
+    }
+});
+
+// Function to handle "Quay"
+document.getElementById('spinButton').addEventListener('click', function () {
+    // Kiểm tra đủ tiền để quay
+    if (balance < 5000) {
+        alert('Không đủ tiền để quay!');
+        return;
+    }
+
+    // Trừ tiền sau mỗi lần quay
+    balance -= 5000;
+    localStorage.setItem('balance', balance);
+    document.getElementById('balance').textContent = balance;
+
+    // Hiển thị loading animation
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('randomResult').style.display = 'none';
+
+    // Quay và dừng sau 3 giây
+    setTimeout(function () {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('randomResult').style.display = 'block';
+        document.getElementById('resultText').textContent = 'Xui rồi! Không trúng';
+    }, 3000); // 3 seconds delay
+});
+
+// Close the popup when user clicks "Đóng"
+document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('randomResult').style.display = 'none';
+});
+
+// Reset balance to 0 when "Reset Số Dư" is clicked
+document.getElementById('resetBalance').addEventListener('click', function () {
+    if (confirm("Bạn có chắc muốn reset số dư về 0đ?")) {
+        balance = 0;
+        localStorage.setItem('balance', balance);
+        document.getElementById('balance').textContent = balance;
+        alert('Số dư đã được reset về 0đ');
+    }
+});
+
+</script>

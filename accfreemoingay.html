@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acc Mỗi ngày</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="letter" id="letter">
+            
+            <div class="flap"></div>
+            <div class="content">
+                <br> <br>
+                <p>Bấm vào để nhập 2 acc Random <br> /// 12h Trưa mới có acc! ///</p> <br>
+                <h3>Nhà cung cấp: Khoa Dev</h3>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Pop-up modal -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p id="popup-text">Acc: <span id="account-info">Phải đúng 12h mới có acc nha! <br> /// Khoa Dev - Acc Liên Quân Vip ///</span></p>
+            <br>
+            <button class="copy-btn" id="copy-btn">Sao chép</button> <br> <button class="close-btn" id="close-popup">Đóng</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    position: relative;
+}
+
+.letter {
+    width: 300px;
+    height: 300px;
+    background-color: #f0c93d;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.letter:hover {
+    background-color: #dab018e0;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: transform 0.6s ease;
+    transform-origin: top;
+}
+
+.letter.open .flap {
+    transform: rotateX(-180deg);
+}
+
+.content {
+    text-align: center;
+    padding-top: 50%;
+    font-size: 18px;
+    color: #333;
+    transition: opacity 0.4s ease;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup.open {
+    display: flex;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.popup.open .popup-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.close-btn {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #e43f3f;
+}
+
+.copy-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:active {
+    background-color: #45a049;
+}
+
+.copy-btn:hover {
+    background-color: #5bcf6d;
+}
+
+</style>
+<script>
+    document.getElementById('letter').addEventListener('click', function() {
+    this.classList.add('open'); // Mở nắp lá thư
+    setTimeout(function() {
+        document.getElementById('popup').classList.add('open'); // Hiện popup
+    }, 600); // Đợi một chút để hoàn thành hiệu ứng mở nắp lá thư
+});
+
+document.getElementById('close-popup').addEventListener('click', function() {
+    document.getElementById('popup').classList.remove('open');
+});
+
+document.getElementById('copy-btn').addEventListener('click', function() {
+    var accountInfo = document.getElementById('account-info').innerText;
+    navigator.clipboard.writeText(accountInfo).then(function() {
+        alert('Đã sao chép tài khoản vào clipboard!');
+    });
+});
+
+</script>
